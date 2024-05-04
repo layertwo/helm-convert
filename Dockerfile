@@ -1,4 +1,4 @@
-FROM golang:1.12 AS build
+FROM golang:1.22 AS build
 ENV GOPATH=""
 ARG LDFLAGS
 COPY go.sum .
