@@ -1,7 +1,6 @@
 package transformers
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/kylelemons/godebug/pretty"
@@ -59,7 +58,7 @@ func TestTransformDataSource(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			output := TransformDataSource(test.resourceName, test.input, test.sourceFiles)
 			if diff := pretty.Compare(output, test.expectedOutput); diff != "" {
 				t.Errorf("%s, diff: (-got +want)\n%s", test.name, diff)

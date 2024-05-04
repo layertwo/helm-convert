@@ -2,8 +2,7 @@ package transformers
 
 import (
 	"encoding/base64"
-	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/kylelemons/godebug/pretty"
@@ -27,11 +26,11 @@ type secretTransformerArgs struct {
 func TestSecretRun(t *testing.T) {
 	var secret = gvk.Gvk{Version: "v1", Kind: "Secret"}
 
-	cert, err := ioutil.ReadFile("./testdata/tls.cert")
+	cert, err := os.ReadFile("./testdata/tls.cert")
 	if err != nil {
 		t.Fatalf("Couldn't load tls.cert as test data")
 	}
-	key, err := ioutil.ReadFile("./testdata/tls.key")
+	key, err := os.ReadFile("./testdata/tls.key")
 	if err != nil {
 		t.Fatalf("Couldn't load tls.key as test data")
 	}
@@ -89,7 +88,7 @@ func TestSecretRun(t *testing.T) {
 			expected: &secretTransformerArgs{
 				config: &ktypes.Kustomization{
 					SecretGenerator: []ktypes.SecretArgs{
-						ktypes.SecretArgs{
+						{
 							GeneratorArgs: ktypes.GeneratorArgs{
 								Name: "secret1",
 								DataSources: ktypes.DataSources{
@@ -98,7 +97,7 @@ func TestSecretRun(t *testing.T) {
 							},
 							Type: string(corev1.SecretTypeOpaque),
 						},
-						ktypes.SecretArgs{
+						{
 							GeneratorArgs: ktypes.GeneratorArgs{
 								Name: "secret2",
 								DataSources: ktypes.DataSources{
@@ -110,7 +109,7 @@ func TestSecretRun(t *testing.T) {
 							},
 							Type: string(corev1.SecretTypeTLS),
 						},
-						ktypes.SecretArgs{
+						{
 							GeneratorArgs: ktypes.GeneratorArgs{
 								Name: "secret3",
 								DataSources: ktypes.DataSources{
@@ -132,7 +131,7 @@ func TestSecretRun(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			res := types.NewResources()
 			res.ResMap = test.input.resources.ResMap
 

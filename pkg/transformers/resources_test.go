@@ -1,7 +1,6 @@
 package transformers
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/kylelemons/godebug/pretty"
@@ -102,7 +101,7 @@ func TestResourcesRun(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			lt := NewResourcesTransformer()
 			err := lt.Transform(test.input.config, test.input.resources)
 

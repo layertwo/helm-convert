@@ -21,7 +21,7 @@ func NewLabelsTransformer(keys []string) Transformer {
 // the label is added to the kustomization.yaml file
 func (t *labelsTransformer) Transform(config *ktypes.Kustomization, resources *types.Resources) error {
 	// delete unwanted labels
-	if err := t.removeLabels(config, resources); err != nil {
+	if err := t.removeLabels(resources); err != nil {
 		return err
 	}
 
@@ -104,7 +104,7 @@ RESOURCES_LOOP:
 	return nil
 }
 
-func (t *labelsTransformer) removeLabels(config *ktypes.Kustomization, resources *types.Resources) error {
+func (t *labelsTransformer) removeLabels(resources *types.Resources) error {
 	paths := []string{"matchLabels", "labels", "selector"}
 	for id := range resources.ResMap {
 		obj := resources.ResMap[id].Map()

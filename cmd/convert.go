@@ -32,8 +32,6 @@ var (
 	settings        helm_env.EnvSettings
 )
 
-const defaultDirectoryPermission = 0755
-
 type convertCmd struct {
 	home helmpath.Home
 

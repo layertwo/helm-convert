@@ -1,7 +1,6 @@
 package transformers
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/kylelemons/godebug/pretty"
@@ -60,7 +59,7 @@ spring.datasource.password=pass123
 			expected: &configMapTransformerArgs{
 				config: &ktypes.Kustomization{
 					ConfigMapGenerator: []ktypes.ConfigMapArgs{
-						ktypes.ConfigMapArgs{
+						{
 							GeneratorArgs: ktypes.GeneratorArgs{
 								Name: "configmap1",
 								DataSources: ktypes.DataSources{
@@ -89,7 +88,7 @@ spring.datasource.password=pass123
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			res := types.NewResources()
 			res.ResMap = test.input.resources.ResMap
 
