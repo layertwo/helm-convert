@@ -1,7 +1,7 @@
 package transformers
 
 import (
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
+	"github.com/layertwo/helm-convert/pkg/types"
 	ktypes "sigs.k8s.io/kustomize/pkg/types"
 )
 

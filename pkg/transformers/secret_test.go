@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/layertwo/helm-convert/pkg/types"
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/kustomize/k8sdeps/kunstruct"
 	"sigs.k8s.io/kustomize/pkg/gvk"

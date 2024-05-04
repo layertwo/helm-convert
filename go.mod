@@ -1,4 +1,4 @@
-module github.com/ContainerSolutions/helm-convert
+module github.com/layertwo/helm-convert
 
 go 1.22.0
 

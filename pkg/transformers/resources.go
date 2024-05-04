@@ -3,8 +3,8 @@ package transformers
 import (
 	"sort"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
-	"github.com/ContainerSolutions/helm-convert/pkg/utils"
+	"github.com/layertwo/helm-convert/pkg/types"
+	"github.com/layertwo/helm-convert/pkg/utils"
 	ktypes "sigs.k8s.io/kustomize/pkg/types"
 )
 
