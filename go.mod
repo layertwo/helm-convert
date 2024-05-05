@@ -7,7 +7,7 @@ toolchain go1.22.2
 require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/golang/glog v1.2.1
-	github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348
+	github.com/kylelemons/godebug v1.1.0
 	github.com/spf13/cobra v1.8.0
 	google.golang.org/grpc v1.63.2
 	k8s.io/api v0.30.0
