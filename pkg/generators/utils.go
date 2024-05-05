@@ -2,7 +2,6 @@ package generators
 
 import (
 	"bufio"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -69,7 +68,7 @@ func writeAndFormatKustomizationConfig(filePath string, comments bool) error {
 func writeFile(filePath string, data []byte, perm os.FileMode) error {
 	glog.V(4).Infof("Writing %s", filePath)
 
-	err := ioutil.WriteFile(filePath, data, perm)
+	err := os.WriteFile(filePath, data, perm)
 	if err != nil {
 		return err
 	}

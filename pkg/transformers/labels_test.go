@@ -1,11 +1,10 @@
 package transformers
 
 import (
-	"fmt"
 	"testing"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/layertwo/helm-convert/pkg/types"
 	"sigs.k8s.io/kustomize/k8sdeps/kunstruct"
 	"sigs.k8s.io/kustomize/pkg/gvk"
 	"sigs.k8s.io/kustomize/pkg/resid"
@@ -339,7 +338,7 @@ func TestLabelsRun(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			lt := NewLabelsTransformer([]string{"chart", "release", "heritage"})
 			err := lt.Transform(test.input.config, test.input.resources)
 

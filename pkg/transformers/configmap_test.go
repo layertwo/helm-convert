@@ -1,11 +1,10 @@
 package transformers
 
 import (
-	"fmt"
 	"testing"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/layertwo/helm-convert/pkg/types"
 	"sigs.k8s.io/kustomize/k8sdeps/kunstruct"
 	"sigs.k8s.io/kustomize/pkg/gvk"
 	"sigs.k8s.io/kustomize/pkg/resid"
@@ -60,7 +59,7 @@ spring.datasource.password=pass123
 			expected: &configMapTransformerArgs{
 				config: &ktypes.Kustomization{
 					ConfigMapGenerator: []ktypes.ConfigMapArgs{
-						ktypes.ConfigMapArgs{
+						{
 							GeneratorArgs: ktypes.GeneratorArgs{
 								Name: "configmap1",
 								DataSources: ktypes.DataSources{
@@ -89,7 +88,7 @@ spring.datasource.password=pass123
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			res := types.NewResources()
 			res.ResMap = test.input.resources.ResMap
 

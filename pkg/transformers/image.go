@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
+	"github.com/layertwo/helm-convert/pkg/types"
 	kimage "sigs.k8s.io/kustomize/pkg/image"
 	ktypes "sigs.k8s.io/kustomize/pkg/types"
 )

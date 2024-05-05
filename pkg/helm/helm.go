@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -248,7 +247,7 @@ func (h *Helm) Vals(valueFiles ValueFiles, values []string, stringValues []strin
 		var bytes []byte
 		var err error
 		if strings.TrimSpace(filePath) == "-" {
-			bytes, err = ioutil.ReadAll(os.Stdin)
+			bytes, err = io.ReadAll(os.Stdin)
 		} else {
 			bytes, err = h.readFile(filePath, CertFile, KeyFile, CAFile)
 		}
@@ -292,7 +291,7 @@ func (h *Helm) Vals(valueFiles ValueFiles, values []string, stringValues []strin
 	return yaml.Marshal(base)
 }
 
-//readFile load a file from the local directory or a remote file with a url.
+// readFile load a file from the local directory or a remote file with a url.
 func (h *Helm) readFile(filePath, CertFile, KeyFile, CAFile string) ([]byte, error) {
 	u, _ := url.Parse(filePath)
 	p := getter.All(h.settings)
@@ -301,7 +300,7 @@ func (h *Helm) readFile(filePath, CertFile, KeyFile, CAFile string) ([]byte, err
 	getterConstructor, err := p.ByScheme(u.Scheme)
 
 	if err != nil {
-		return ioutil.ReadFile(filePath)
+		return os.ReadFile(filePath)
 	}
 
 	getter, err := getterConstructor(filePath, CertFile, KeyFile, CAFile)

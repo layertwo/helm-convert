@@ -11,11 +11,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ContainerSolutions/helm-convert/pkg/generators"
-	"github.com/ContainerSolutions/helm-convert/pkg/helm"
-	"github.com/ContainerSolutions/helm-convert/pkg/transformers"
-	"github.com/ContainerSolutions/helm-convert/pkg/types"
 	"github.com/golang/glog"
+	"github.com/layertwo/helm-convert/pkg/generators"
+	"github.com/layertwo/helm-convert/pkg/helm"
+	"github.com/layertwo/helm-convert/pkg/transformers"
+	"github.com/layertwo/helm-convert/pkg/types"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc/status"
 	k8syaml "k8s.io/apimachinery/pkg/util/yaml"
@@ -31,8 +31,6 @@ var (
 	whitespaceRegex = regexp.MustCompile(`^\s*$`)
 	settings        helm_env.EnvSettings
 )
-
-const defaultDirectoryPermission = 0755
 
 type convertCmd struct {
 	home helmpath.Home

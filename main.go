@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/ContainerSolutions/helm-convert/cmd"
 	"github.com/golang/glog"
+	"github.com/layertwo/helm-convert/cmd"
 )
 
 func main() {
