@@ -110,7 +110,10 @@ func (t *labelsTransformer) removeLabels(resources *types.Resources) error {
 		obj := resources.ResMap[id].Map()
 		for _, path := range paths {
 			for _, key := range t.keys {
-				utils.RecursivelyRemoveKey(path, key, obj)
+				err := utils.RecursivelyRemoveKey(path, key, obj)
+				if err != nil {
+					return err
+				}
 			}
 		}
 	}

@@ -134,7 +134,8 @@ func NewConvertCommand() *cobra.Command {
 	f.StringVar(&k.password, "password", "", "chart repository password")
 	f.BoolVar(&k.comments, "comments", true, "add default comments to kustomization.yaml file")
 
-	// log to stderr by default,
+	// log to stderr by default
+	// lint:ignore
 	flag.Set("logtostderr", "true")
 
 	// add glog flags

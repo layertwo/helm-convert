@@ -50,7 +50,10 @@ func (g *Generator) Render(destination string, config *ktypes.Kustomization,
 			}
 		}
 	} else {
-		os.MkdirAll(destination, os.ModePerm)
+		err := os.MkdirAll(destination, os.ModePerm)
+		if err != nil {
+			return err
+		}
 	}
 
 	// render all manifests

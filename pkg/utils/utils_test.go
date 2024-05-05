@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/kylelemons/godebug/pretty"
@@ -42,7 +41,7 @@ func TestGetResourceFileName(t *testing.T) {
 			expected: "my-deployment-deploy.yaml",
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			output, err := GetResourceFileName(test.input.id, test.input.resource)
 			if err != nil {
 				t.Fatalf("expected no error, got:\n %v", err)
@@ -75,7 +74,7 @@ func TestGetKindAbbreviation(t *testing.T) {
 			expected: "thisisanonexistingname",
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			output := GetKindAbbreviation(test.input)
 			if output != test.expected {
 				t.Fatalf(
@@ -113,7 +112,7 @@ func TestGetPrefix(t *testing.T) {
 			expected: "",
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			output := GetPrefix(test.input)
 			if output != test.expected {
 				t.Fatalf(
@@ -184,7 +183,7 @@ func TestRecursivelyRemoveKey(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%s", test.name), func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
 			err := RecursivelyRemoveKey(test.input.path, test.input.key, test.input.obj)
 			if err != nil {
 				t.Fatalf("unexpected error: %v", err)

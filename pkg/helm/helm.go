@@ -216,7 +216,10 @@ func (h *Helm) LocateChartPath(repoURL, username, password, name, version string
 	}
 
 	if _, err := os.Stat(h.settings.Home.Archive()); os.IsNotExist(err) {
-		os.MkdirAll(h.settings.Home.Archive(), 0744)
+		err := os.MkdirAll(h.settings.Home.Archive(), 0744)
+		if err != nil {
+			return "unable to create " + h.settings.Home.Archive(), err
+		}
 	}
 
 	glog.V(8).Infof("Downloading chart '%s' version '%s' with parameters: %#v\n", name, version, dl)

@@ -57,9 +57,7 @@ func RecursivelyRemoveKey(path, key string, obj map[string]interface{}) error {
 		case map[string]interface{}:
 			if k == path {
 				m := obj[path].(map[string]interface{})
-				if _, exist := m[key]; exist {
-					delete(m, key)
-				}
+				delete(m, key)
 			} else {
 				err := RecursivelyRemoveKey(path, key, typedV)
 				if err != nil {
