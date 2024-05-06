@@ -20,4 +20,4 @@ jobs:
           go-version-file: 'go.mod'
       - uses: golangci/golangci-lint-action@v5
         with:
-          version: v1.56.0
+          version: latest
