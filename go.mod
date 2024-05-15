@@ -9,7 +9,7 @@ require (
 	github.com/golang/glog v1.2.1
 	github.com/kylelemons/godebug v1.1.0
 	github.com/spf13/cobra v1.8.0
-	google.golang.org/grpc v1.63.2
+	google.golang.org/grpc v1.64.0
 	k8s.io/api v0.30.0
 	k8s.io/apimachinery v0.30.0
 	k8s.io/helm v2.17.0+incompatible
